@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build": "next build",
+    "cloudflare-build": "pnpm install --no-frozen-lockfile && pnpm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
