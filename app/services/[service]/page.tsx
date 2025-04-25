@@ -163,7 +163,13 @@ export function generateMetadata({ params }: { params: { service: string } }) {
   }
 }
 
-export default function ServicePage({ params }: { params: { service: string } }) {
+interface PageProps {
+  params: {
+    service: string
+  }
+}
+
+export default async function ServicePage({ params }: PageProps) {
   const service = serviceData[params.service as keyof typeof serviceData]
   const allServices = Object.keys(serviceData).map((key) => ({
     id: key,
