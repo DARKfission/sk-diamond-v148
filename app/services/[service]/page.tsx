@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, ArrowLeft } from "lucide-react"
@@ -7,6 +9,7 @@ import { GlassCard } from "@/components/ui/glass-card"
 import PageHeader from "@/components/page-header"
 import SpecialCutIcon from "@/components/special-cut-icon"
 
+// Define service data
 const serviceData = {
   "diamond-cutting": {
     title: "Diamond Cutting",
@@ -141,31 +144,37 @@ const serviceData = {
 }
 
 export function generateStaticParams() {
-  return Object.keys(serviceData).map((service) => ({ service }))
+  return Object.keys(serviceData).map((service) => ({
+    service,
+  }))
 }
 
 export function generateMetadata({ params }: { params: { service: string } }) {
   const service = serviceData[params.service as keyof typeof serviceData]
+
   if (!service) {
     return {
       title: "Service Not Found | SK Diamond",
       description: "The requested service could not be found.",
     }
   }
+
   return {
     title: `${service.title} | SK Diamond Services`,
     description: service.description,
   }
 }
 
-export default async function ServicePage({ params }: { params: { service: string } }) {
+export default function ServicePage({ params }: { params: { service: string } }) {
   const service = serviceData[params.service as keyof typeof serviceData]
   const allServices = Object.keys(serviceData).map((key) => ({
     id: key,
     title: serviceData[key as keyof typeof serviceData].title,
   }))
 
-  if (!service) notFound()
+  if (!service) {
+    notFound()
+  }
 
   return (
     <main className="flex flex-col min-h-screen relative">
@@ -207,7 +216,9 @@ export default async function ServicePage({ params }: { params: { service: strin
           className={`py-16 md:py-24 ${index % 2 === 0 ? "bg-white/20 dark:bg-gray-950/20" : "bg-gray-50/20 dark:bg-gray-900/20"}`}
         >
           <div className="container px-4 md:px-6">
-            <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}
+            >
               <div className={index % 2 !== 0 ? "md:order-2" : ""}>
                 <GlassCard className="p-6">
                   <SpecialCutIcon
