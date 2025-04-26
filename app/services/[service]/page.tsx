@@ -36,7 +36,11 @@ export function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }: { params: { service: string } }): Metadata {
+type Props = {
+  params: { service: string }
+}
+
+export function generateMetadata({ params }: Props): Metadata {
   const service = serviceData[params.service as keyof typeof serviceData]
 
   if (!service) {
@@ -52,6 +56,6 @@ export function generateMetadata({ params }: { params: { service: string } }): M
   }
 }
 
-export default function ServicePage() {
+export default function ServicePage({ params }: Props) {
   return <ClientPage />
 }
