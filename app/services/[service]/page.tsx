@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, ArrowLeft } from "lucide-react"
@@ -8,6 +6,7 @@ import { notFound } from "next/navigation"
 import { GlassCard } from "@/components/ui/glass-card"
 import PageHeader from "@/components/page-header"
 import SpecialCutIcon from "@/components/special-cut-icon"
+import type { Metadata } from "next"
 
 // Define service data
 const serviceData = {
@@ -149,7 +148,11 @@ export function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }: { params: { service: string } }) {
+type Params = {
+  service: string
+}
+
+export function generateMetadata({ params }: { params: Params }): Metadata {
   const service = serviceData[params.service as keyof typeof serviceData]
 
   if (!service) {
@@ -165,7 +168,7 @@ export function generateMetadata({ params }: { params: { service: string } }) {
   }
 }
 
-export default function ServicePage({ params }: { params: { service: string } }) {
+export default function ServicePage({ params }: { params: Params }) {
   const service = serviceData[params.service as keyof typeof serviceData]
   const allServices = Object.keys(serviceData).map((key) => ({
     id: key,
