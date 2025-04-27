@@ -8,6 +8,3 @@ output_dir = "out"
 
 [site]
 bucket = "./out"
-
-[env.production]
-pages_build_output_dir = "out"
