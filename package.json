@@ -1,10 +1,10 @@
 {
-  "name": "my-v0-project",
+  "name": "sk-diamond-v148",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "tsc --noEmit false && next build",
+    "build": "node build.js",
     "start": "next start",
     "lint": "next lint"
   },
