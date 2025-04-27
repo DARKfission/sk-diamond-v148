@@ -8,7 +8,6 @@ import { notFound } from "next/navigation"
 import { GlassCard } from "@/components/ui/glass-card"
 import PageHeader from "@/components/page-header"
 import SpecialCutIcon from "@/components/special-cut-icon"
-import { useParams } from "next/navigation"
 
 // Define service data
 const serviceData = {
@@ -144,9 +143,8 @@ const serviceData = {
   },
 }
 
-export default function ClientPage() {
-  const params = useParams()
-  const serviceId = params.service as string
+export default function ClientPage({ params }: { params: { service: string } }) {
+  const serviceId = params.service
   const service = serviceData[serviceId as keyof typeof serviceData]
   const allServices = Object.keys(serviceData).map((key) => ({
     id: key,
