@@ -5,16 +5,22 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // This will completely ignore all TypeScript errors
+    ignoreBuildErrors: true,
   },
   images: {
     unoptimized: true,
   },
   trailingSlash: true,
-  // Disable type checking during build
   experimental: {
-    typedRoutes: false
-  }
+    typedRoutes: false,
+    esmExternals: 'loose',
+  },
+  transpilePackages: ['lucide-react'],
+  compiler: {
+    removeConsole: false,
+  },
+  reactStrictMode: false,
+  swcMinify: true,
 }
 
 export default nextConfig
