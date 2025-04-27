@@ -1,6 +1,4 @@
-// Disable TypeScript checking for this file
-// @ts-nocheck
-
+import type { Metadata } from "next"
 import ClientPage from "./client-page"
 
 // Define service data for metadata generation
@@ -27,6 +25,23 @@ const serviceData = {
   },
 }
 
+// Generate metadata for the page
+export function generateMetadata({ params }: { params: { service: string } }): Metadata {
+  const service = serviceData[params.service as keyof typeof serviceData]
+
+  if (!service) {
+    return {
+      title: "Service Not Found",
+      description: "The requested service could not be found.",
+    }
+  }
+
+  return {
+    title: `${service.title} | SK Diamond`,
+    description: service.description,
+  }
+}
+
 // Generate static paths for all services
 export function generateStaticParams() {
   return Object.keys(serviceData).map((service) => ({
@@ -34,7 +49,7 @@ export function generateStaticParams() {
   }))
 }
 
-// Main page component - completely simplified to avoid type issues
-export default function ServicePage() {
-  return <ClientPage />
+// Main page component
+export default function ServicePage({ params }: { params: { service: string } }) {
+  return <ClientPage params={params} />
 }
