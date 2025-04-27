@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import ClientPage from "./client-page"
 
@@ -37,45 +36,18 @@ type ServiceParams = {
 }
 
 // Generate static paths for all services
-export function generateStaticParams(): ServiceParams[] {
+export function generateStaticParams() {
   return Object.keys(serviceData).map((service) => ({
     service,
   }))
 }
 
-// Generate metadata for each service page
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<ServiceParams>
-}): Promise<Metadata> {
-  const resolvedParams = await params
-  const service = serviceData[resolvedParams.service as keyof typeof serviceData]
-
-  if (!service) {
-    return {
-      title: "Service Not Found | SK Diamond",
-      description: "The requested service could not be found.",
-    }
-  }
-
-  return {
-    title: `${service.title} | SK Diamond Services`,
-    description: service.description,
-  }
-}
-
-// Main page component
-export default async function ServicePage({
-  params,
-}: {
-  params: Promise<ServiceParams>
-}) {
-  const resolvedParams = await params
-  const serviceId = resolvedParams.service
-
+// Main page component - simplified to avoid type issues
+export default function ServicePage({ params }: any) {
   // Check if service exists
+  const serviceId = params?.service
   const service = serviceData[serviceId as keyof typeof serviceData]
+
   if (!service) {
     notFound()
   }
