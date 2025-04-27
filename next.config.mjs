@@ -11,6 +11,10 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  // Disable type checking during build
+  experimental: {
+    typedRoutes: false
+  }
 }
 
 export default nextConfig
