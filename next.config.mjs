@@ -5,7 +5,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // This will allow the build to succeed even with type errors
+    ignoreBuildErrors: true, // This will completely ignore all TypeScript errors
   },
   images: {
     unoptimized: true,
