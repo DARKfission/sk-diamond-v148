@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import ClientPage from "./client-page"
 
 // Define service data for metadata generation
@@ -26,8 +25,8 @@ const serviceData = {
 }
 
 // Generate metadata for the page
-export function generateMetadata({ params }: { params: { service: string } }): Metadata {
-  const service = serviceData[params.service as keyof typeof serviceData]
+export function generateMetadata({ params }) {
+  const service = serviceData[params.service]
 
   if (!service) {
     return {
@@ -50,6 +49,6 @@ export function generateStaticParams() {
 }
 
 // Main page component
-export default function ServicePage({ params }: { params: { service: string } }) {
+export default function ServicePage({ params }) {
   return <ClientPage params={params} />
 }
