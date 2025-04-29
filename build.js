@@ -1,26 +1,23 @@
 const { execSync } = require("child_process")
 const fs = require("fs")
-const path = require("path")
 
-// Delete the TypeScript version of the problematic file
-try {
-  fs.unlinkSync(path.join(__dirname, "app/services/[service]/page.tsx"))
-  console.log("Successfully deleted TypeScript version of page.tsx")
-} catch (error) {
-  console.log("No TypeScript version to delete or error:", error.message)
+// Create the out directory if it doesn't exist
+if (!fs.existsSync("out")) {
+  fs.mkdirSync("out", { recursive: true })
 }
 
-// Run the build command with TypeScript checking disabled
-try {
-  console.log("Running build with TypeScript checking disabled...")
-  execSync("NEXT_SKIP_TYPESCRIPT_CHECK=true next build", { stdio: "inherit" })
+console.log("Starting static site generation...")
 
-  // Copy static files
-  console.log("Copying static files...")
-  execSync("cp -r .next/static out/_next/static", { stdio: "inherit" })
+// Run the static export script
+console.log("Running static export...")
+execSync("node static-export.js")
 
-  console.log("Build completed successfully!")
-} catch (error) {
-  console.error("Build failed:", error)
-  process.exit(1)
-}
+// Generate service pages
+console.log("Generating service pages...")
+execSync("node generate-service-pages.js")
+
+// Generate services index page
+console.log("Generating services index page...")
+execSync("node generate-services-index.js")
+
+console.log("Static site generation completed successfully!")
