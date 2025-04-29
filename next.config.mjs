@@ -11,6 +11,15 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  experimental: {
+    typedRoutes: false,
+  },
+  transpilePackages: ['lucide-react'],
+  compiler: {
+    removeConsole: false,
+  },
+  reactStrictMode: false,
+  swcMinify: true,
 }
 
 export default nextConfig
