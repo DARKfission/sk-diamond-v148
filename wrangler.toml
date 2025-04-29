@@ -3,7 +3,7 @@ compatibility_date = "2023-06-28"
 compatibility_flags = ["nodejs_compat"]
 
 [build]
-command = "npm run build"
+command = "bash build.sh"
 output_dir = "out"
 
 [site]
