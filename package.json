@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "bash build.sh",
-    "next-build": "next build",
+    "build": "node build.js",
     "start": "next start",
     "lint": "next lint"
   },
