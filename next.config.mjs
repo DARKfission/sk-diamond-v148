@@ -1,23 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
-  experimental: {
-    typedRoutes: false,
+  typescript: {
+    // This is the key setting that will allow the build to succeed
+    // even with TypeScript errors
+    ignoreBuildErrors: true,
   },
+  eslint: {
+    // Also ignore ESLint errors during build
+    ignoreDuringBuilds: true,
+  },
+  // Disable type checking during build
   transpilePackages: ['lucide-react'],
-  compiler: {
-    removeConsole: false,
-  },
+  // Disable strict mode for compatibility
   reactStrictMode: false,
   swcMinify: true,
 }
