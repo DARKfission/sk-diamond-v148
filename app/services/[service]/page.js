@@ -1,4 +1,3 @@
-// JavaScript version of the page component to bypass TypeScript errors
 import ClientPage from "./client-page"
 
 // Define service data for metadata generation
@@ -25,6 +24,23 @@ const serviceData = {
   },
 }
 
+// Generate metadata for the page
+export function generateMetadata({ params }) {
+  const service = serviceData[params.service]
+
+  if (!service) {
+    return {
+      title: "Service Not Found",
+      description: "The requested service could not be found.",
+    }
+  }
+
+  return {
+    title: `${service.title} | SK Diamond`,
+    description: service.description,
+  }
+}
+
 // Generate static paths for all services
 export function generateStaticParams() {
   return Object.keys(serviceData).map((service) => ({
@@ -32,7 +48,7 @@ export function generateStaticParams() {
   }))
 }
 
-// Main page component - completely simplified to avoid type issues
-export default function ServicePage() {
-  return <ClientPage />
+// Main page component
+export default function ServicePage({ params }) {
+  return <ClientPage params={params} />
 }
