@@ -10,7 +10,7 @@ rm -f yarn.lock
 rm -f pnpm-lock.yaml
 
 # Install dependencies with npm (more reliable in CI environments)
-echo "Installing dependencies with npm..."
+echo "Installing dependencies with npm instead of pnpm..."
 npm install --no-package-lock
 
 # Set environment variables to disable TypeScript checking
