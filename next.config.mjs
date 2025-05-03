@@ -13,22 +13,9 @@ const nextConfig = {
   transpilePackages: ['lucide-react'],
   reactStrictMode: false,
   swcMinify: true,
-
-  // MDX support
-  webpack(config, options) {
-    // Adding MDX support
-    config.module.rules.push({
-      test: /\.mdx$/,
-      use: [
-        options.defaultLoaders.babel,
-        {
-          loader: '@mdx-js/loader',
-        },
-      ],
-    });
-
-    return config;
+  experimental: {
+    swcLoader: true, // Enable SWC for font loading
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
