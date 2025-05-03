@@ -14,6 +14,13 @@ const nextConfig = {
   reactStrictMode: true, // Turn this ON to catch more issues in dev
   swcMinify: true, // Faster builds and smaller bundles
 
+  // Remove deprecated 'experimental.serverActions'
+  // Remove 'swcLoader' in the experimental section
+  // Server Actions are available by default now
+  // Add typedRoutes experiment if needed
+  experimental: {
+    typedRoutes: true, // Optional: Enable typed routes for better type safety
+  },
 }
 
 export default nextConfig
