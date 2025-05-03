@@ -13,12 +13,7 @@ const nextConfig = {
   transpilePackages: ['lucide-react'], // Good if you need ESM support
   reactStrictMode: true, // Turn this ON to catch more issues in dev
   swcMinify: true, // Faster builds and smaller bundles
-  experimental: {
-    swcLoader: true, // Keep if using custom fonts
-    typedRoutes: true, // ✅ Improves type safety for `app/` routes
-    serverActions: false, // Optional if you don’t use server actions
-    urlImports: false // Optional, depending on if you're importing via URLs
-  }
+
 }
 
 export default nextConfig
