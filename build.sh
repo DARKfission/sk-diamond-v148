@@ -19,7 +19,7 @@ export NEXT_TELEMETRY_DISABLED=1
 export NODE_OPTIONS="--max_old_space_size=4096"
 
 # Run the Next.js build
-echo "Running Next.js build..."
+echo "Running next.config.mjs build..."
 npm run next-build
 
 echo "Build completed successfully!"
