@@ -1,0 +1,12 @@
+name = "sk-diamond-v148"
+compatibility_date = "2023-06-28"
+
+[build]
+command = "bash build.sh"
+output_dir = "out"
+
+[site]
+bucket = "./out"
+
+[env.production]
+pages_build_output_dir = "out"
