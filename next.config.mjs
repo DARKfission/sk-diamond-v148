@@ -1,25 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Required for static exports like Cloudflare Pages
+  output: 'export',
   images: {
-    unoptimized: true, // Needed for static export
+    unoptimized: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // Can be risky; consider fixing errors instead
+    ignoreBuildErrors: true,
   },
   eslint: {
-    ignoreDuringBuilds: true, // Useful for CI/CD, but fix ESLint locally
+    ignoreDuringBuilds: true,
   },
-  transpilePackages: ['lucide-react'], // Good if you need ESM support
-  reactStrictMode: true, // Turn this ON to catch more issues in dev
-  swcMinify: true, // Faster builds and smaller bundles
-
-  // Remove deprecated 'experimental.serverActions'
-  // Remove 'swcLoader' in the experimental section
-  // Server Actions are available by default now
-  // Add typedRoutes experiment if needed
+  transpilePackages: ['lucide-react'],
+  reactStrictMode: true,
+  swcMinify: true,
   experimental: {
-    typedRoutes: true, // Optional: Enable typed routes for better type safety
+    typedRoutes: true,
   },
 }
 
