@@ -1,11 +1,7 @@
 name = "sk-diamond-v148"
-main = "worker.js"  # This should be your worker entry file
 compatibility_date = "2025-05-04"
 
 [build]
-command = "npm run build"  # Adjust this if needed
-cwd = "./"  # Working directory
-output_dir = "out"  # This is where Cloudflare Pages will look for the build output
-
-[build.upload]
-format = "service-worker"  # Adjust this if using Pages with specific formats
+command = "npx @cloudflare/next-on-pages@1"
+cwd = "."
+output_dir = ".vercel/output/static"
