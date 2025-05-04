@@ -1,6 +1,9 @@
 {
   "name": "sk-diamond-v148",
   "version": "1.0.0",
+  "engines": {
+    "node": "20.x"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
