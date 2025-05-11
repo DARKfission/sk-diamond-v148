@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
-// next.config.js
 const nextConfig = {
-  output: 'export',
+  // ❌ Removed "output: 'export'" to allow dynamic API routes
   images: {
     unoptimized: true,
   },
@@ -13,7 +12,7 @@ const nextConfig = {
   },
   transpilePackages: ['lucide-react'],
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: true, // ✅ This is valid again after removal of output: "export"
   experimental: {
     typedRoutes: true,
   },
