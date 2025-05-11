@@ -74,7 +74,7 @@ export async function POST(request: Request) {
     // ✅ Send email
     const { data, error } = await resend.emails.send({
       from: "vik@sk-diamond.com",
-      to: "info@sk-diamond.com",
+      to: "web@sk-diamond.com",
       subject: `New Inquiry from Website: ${subject}`,
       html: emailContent,
       reply_to: email,
