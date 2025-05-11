@@ -1,3 +1,0 @@
-name = "sk-diamond-v148"
-main = "worker.js"  # This should be your worker entry file
-compatibility_date = "2025-05-04"
