@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 
+export const runtime = "edge" // ✅ <== REQUIRED for Cloudflare Pages
 // ✅ Use API key from environment variable (no hardcoded key)
 const resend = new Resend(process.env.RESEND_API_KEY)
 
